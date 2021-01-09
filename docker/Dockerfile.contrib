@@ -53,6 +53,8 @@ RUN yarn version -s --no-git-tag-version --new-version $(yarn versions --json| \
 
 RUN mkdir my_dist
 RUN cp -Lr .git app.js package.json bin config dist hass lib public store views node_modules my_dist/
+RUN rm -rf my_dist/node_modules/zwave-js/node_modules/\@zwave-js
+RUN ln -s ../../\@zwave-js my_dist/node_modules/zwave-js/node_modules/\@zwave-js
 
 FROM node:erbium-buster-slim
 LABEL maintainer="robertsLando"
